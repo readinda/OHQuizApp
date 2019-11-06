@@ -13,4 +13,231 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="math7_1"> Hasil dari [6 + (- 9 )] x 5 – 18 : (-3) = adalah</string>
+    <string name="math71_a">– 21</string>
+    <string name="math71_b">– 9</string>
+    <string name="math71_c">9</string>
+
+    <string name="math7_2">Jika  n × (20 : - 5) = 120, maka nilai n =</string>
+    <string name="math72_a">– 30</string>
+    <string name="math72_b">– 15</string>
+    <string name="math72_c">15</string>
+
+    <string name="math7_3">Suhu udara di suatu kota di Eropa ketika musim dingin adalah – 10oC. Ketika musim semi, suhu udara meningkat hingga menjadi 18oC. Berapa selisih udara di kota tersebut antara musim dingin dan musim semi?</string>
+    <string name="math73_a">– 28oC</string>
+    <string name="math73_b">8oC</string>
+    <string name="math73_c">28oC</string>
+
+    <string name="math7_4">Suatu kompetisi mempunyai aturan sebagai berikut;  Jika menang mendapat nilai 3, jika kalah mendapat nilai –2 dan jika seri mendapat nilai 1. Regu  Tangkas bermain 15 kali dengan hasil 8 kali menang dan 3 kali seri. Nilai yang didapat regu Tangkas adalah</string>
+    <string name="math74_a">– 7</string>
+    <string name="math74_b">11</string>
+    <string name="math74_c">19</string>
+
+    <string name="math7_5">Faktor Persekutuan Terbesar (FPB) dari 36, 48 dan 72 adalah</string>
+    <string name="math75_a">10</string>
+    <string name="math75_b">12</string>
+    <string name="math75_c">14</string>
+
+    <string name="science7_1">Satuan besaran pokok didalam Sistem Internasional (SI) adalah</string>
+    <string name="science71_a">Meter, kilogram, sekon </string>
+    <string name="science71_b">Meter kubik, gram, meter/sekon</string>
+    <string name="science71_c">Meter, meter kubik, sekon</string>
+
+    <string name="science7_2">Yang bukan termasuk kedalam besaran pokok yaitu antara lain</string>
+    <string name="science72_a">Massa</string>
+    <string name="science72_b">Waktu</string>
+    <string name="science72_c">Volume</string>
+
+    <string name="science7_3">Besaran yang dapat diukur dan memiliki satuan disebut besaran  </string>
+    <string name="science74_a">Matematika </string>
+    <string name="science74_b">Kimia</string>
+    <string name="science74_c">Fisika</string>
+
+    <string name="science7_4">Nilai dari besaran panjang dapat dinyatakan dengan sebuah satuan di bawah ini yaitu</string>
+    <string name="science73_a">Jengkal, Sekon, Depa dan Meter </string>
+    <string name="science73_b">Meter, Yard, Depa, Menit</string>
+    <string name="science73_c">Yard, Jengkal, Meter dan Kaki</string>
+
+    <string name="science7_5">Di bawah ini cara mengukur sesuatu secara tidak langsung yaitu</string>
+    <string name="science75_a">Mengukur volume balok </string>
+    <string name="science75_b">Mengukur volume kubus </string>
+    <string name="science75_c">Mengukur volume batu</string>
+
+    <string name="indonesian7_1">Berikut ini ialah contoh penggalan teks laporan yang disusun atas dasar pola urutan waktu yaitu</string>
+    <string name="indonesian71_a">Kantor kelurahan menghadap arah depan mushola. Batas pagar mushola hanya berselang sekitar 3 meter saja.</string>
+    <string name="indonesian71_b">Ketika istirahat kami makan bersama sambil mengobrol ringan sebagai periang istirahat kami.</string>
+    <string name="indonesian71_c">Setelah melintasi pemakaman, sekitar 200 meter kamu akan menemukan toko buah. Disitulah rumah saya.</string>
+
+    <string name="indonesian7_2">Tujuan teks laporan adalah </string>
+    <string name="indonesian72_a">Memberikan informasi perstiwa yang belum terjadi</string>
+    <string name="indonesian72_b">Memberikan suatu informasi secara umum kepada pembaca</string>
+    <string name="indonesian72_c">Untuk memberikan penjelasan tentang suatu perisiwa</string>
+
+    <string name="indonesian7_3">Salah satu struktur dalam teks laporan adalah </string>
+    <string name="indonesian73_a">Kesimpulan umum</string>
+    <string name="indonesian73_b">Teori</string>
+    <string name="indonesian73_c">Klarifikasi umum</string>
+
+    <string name="indonesian7_4"> Bagaimana kondisi para pendaki gunung semeru yang hilang setelah dua hari baru diketemukan oleh tim SAR? </string>
+    <string name="indonesian74_a">Alasan para korban hilang untuk dicari</string>
+    <string name="indonesian74_b">Kondisi para korban hilang yang baru 2 hari bisa diketemukan</string>
+    <string name="indonesian74_c">Mengapa mereka harus menghilang</string>
+
+    <string name="indonesian7_5">Struktur dalam wawancara adalah kecuali </string>
+    <string name="indonesian75_a">awal wanwancara</string>
+    <string name="indonesian75_b">akhir wawancara</string>
+    <string name="indonesian75_c">waktu wawancara</string>
+
+    <string name="math8_1">Banyaknya diagonal ruang pada balok adalah</string>
+    <string name="math81_a">8 buah</string>
+    <string name="math81_b">4 buah</string>
+    <string name="math81_c">10 buah</string>
+
+    <string name="math8_2">Banyaknya rusuk tegak pada limas segiempat adalahSegitiga ABC siku-siku di A. Panjang sisi AB = 21 cm dan sisi BC = 35 cm. Panjang jari-jari lingkaran luar segitiga ABC adalah</string>
+    <string name="math82_a">8 </string>
+    <string name="math82_b">6</string>
+    <string name="math82_c">4</string>
+
+    <string name="math8_3">Segitiga ABC siku-siku di A. Panjang sisi AB = 21 cm dan sisi BC = 35 cm. Panjang jari-jari lingkaran luar segitiga ABC adalah</string>
+    <string name="math83_a">15.5 cm</string>
+    <string name="math83_b">17.5 cm</string>
+    <string name="math83_c">8 cm</string>
+
+    <string name="math8_4">Luas alas suatu kubus 25 cm2. Volume kubus tersebut adalah </string>
+    <string name="math84_a">75 cm3</string>
+    <string name="math84_b">225 cm3</string>
+    <string name="math84_c">125 cm3</string>
+
+    <string name="math8_5">Luas permukaan kubus yang memiliki panjang rusuk 2p adalah</string>
+    <string name="math85_a">20 p2</string>
+    <string name="math85_b">12 p2</string>
+    <string name="math85_c">24 p2</string>
+
+    <string name="science8_1">Gaya yang bekerja pada suatu benda akan mengakibatkan beberapa perubahan berikut, kecuali perubahan</string>
+    <string name="science81_a"> berat</string>
+    <string name="science81_b">bentuk</string>
+    <string name="science81_c">arah gerak</string>
+
+    <string name="science8_2">Benda yang dilemparkan vertikal ke atas, akan jatuh ke bumi. Peristiwa ini terjadi karena adanya  gaya</string>
+    <string name="science82_a">gravitasi bumi</string>
+    <string name="science82_b">listrik</string>
+    <string name="science82_c">gesek udara</string>
+
+    <string name="science8_3">Dua buah gaya yang bekerja pada suatu benda dikatakan seimbang, jika gaya-gaya tersebut</string>
+    <string name="science83_a">sama besar dan searah</string>
+    <string name="science83_b">tidak sama besar dan searah </string>
+    <string name="science83_c">sama besar dan berlawanan arah</string>
+
+    <string name="science8_4">Berikut ini yang termasuk gaya gesek menguntungkan adalah</string>
+    <string name="science84_a">pengereman untuk memperlambat laju mobil</string>
+    <string name="science84_b">gesekan air pada kapal laut yang sedang bergerak </string>
+    <string name="science84_c">gesekan angin pada mobil yang bergerak</string>
+
+    <string name="science8_5">Jika gaya yang dikerjakan pada suatu benda lebih kecil daripada gaya geseknya, maka yang terjadi adalah benda</string>
+    <string name="science85_a">diam </string>
+    <string name="science85_b">tepat akan bergerak </string>
+    <string name="science85_c">bergerak</string>
+
+    <string name="indonesian8_1">Penggunaan awalan me- yang benar pada kalimat berikut ini adalah ?</string>
+    <string name="indonesian81_a">Ibu memasak di dapur .</string>
+    <string name="indonesian81_b"> Budi mecolok mata Dika hingga menangis.</string>
+    <string name="indonesian81_c">Pasukan Belanda membom kota Surabaya dengan membabi buta.</string>
+
+    <string name="indonesian8_2">Imbuhan Ter- yang bermakna tidak sengaja adalah ?</string>
+    <string name="indonesian82_a"> Ibu terpanggil hatinya untuk menolong anak itu.</string>
+    <string name="indonesian82_b"> Garam tercampur di kopi ayah, sehingga terasa asin.</string>
+    <string name="indonesian82_c">Saksi mata sedang memberikan kesaksiannya kepada tergugat di meja hijau.</string>
+
+    <string name="indonesian8_3">Pasangan kata di bawah ini yang bersinonim adalah ?</string>
+    <string name="indonesian83_a">Pulang – pergi </string>
+    <string name="indonesian83_b">Diberi – dikasih </string>
+    <string name="indonesian83_c">Tangis – menangisi</string>
+
+    <string name="indonesian8_4">Berikut ini adalah bagian yang harus ada di dalam surat resmi, kecuali ?</string>
+    \
+    <string name="indonesian84_a">Tanggal surat </string>
+    <string name="indonesian84_b"> Kop surat</string>
+    <string name="indonesian84_c">Tembusan</string>
+
+    <string name="indonesian8_5">Berikut ini yang termasuk ke dalam kalimat aktif transitive adalah </string>
+    <string name="indonesian85_a">Adik menangis karena dimarahi ibu .</string>
+    <string name="indonesian85_b">Jaka menangisi adiknya yang masih kecil. </string>
+    <string name="indonesian85_c">Adik ditangisi oleh Budi.</string>
+
+    <string name="math9_1">Hasil dari  (- 12) : 3 + 8 x (- 5) adalah</string>
+    <string name="math91_a">- 44</string>
+    <string name="math91_b">- 36</string>
+    <string name="math91_c">28</string>
+
+    <string name="math9_2">Suhu tempat A adalah 10 C di bawah nol, suhu tempat B adalah 20C di atas nol, dan suhu tempat C adalah tepat di antara suhu tempat A dan tempat B. Suhu tempat C adalah</string>
+    <string name="math92_a">– 15</string>
+    <string name="math92_b">-5</string>
+    <string name="math92_c">5</string>
+
+    <string name="math9_3">Jarak sebenarnya antara dua kota 80 km, sedangkan jarak pada peta 5 cm. Skala peta tersebut adalah</string>
+    <string name="math93_a">1 : 400</string>
+    <string name="math93_b">1 : 1.600.000</string>
+    <string name="math93_c">1 : 160.000</string>
+
+    <string name="math9_4">Sebuah mobil memerlukan 15 liter bensin untuk menempuh jarak sejauh 180 km. Jika tangki mobil tersebut berisi 20 liter bensin, jarak yang dapat ditempuh adalah</string>
+    <string name="math94_a">320 km</string>
+    <string name="math94_b">240 km</string>
+    <string name="math94_c">230 km</string>
+
+    <string name="math9_5">Suatu pekerjaan dapat diselesaikan oleh 15 pekerja dalam waktu 12 minggu. Jika pekerjaan itu harus selesai dalam 9 minggu, banyak pekerja yang harus ditambah adalah</string>
+    <string name="math95_a">3 orang</string>
+    <string name="math95_b">4 orang</string>
+    <string name="math95_c">5 orang</string>
+
+    <string name="science9_1">Karakteristik sel pada fase interfase yang tepat adalah</string>
+    <string name="science91_a">Terbentuknya materi genetik dalam bentuk kromosom </string>
+    <string name="science91_b"> Membran inti masih terlihat</string>
+    <string name="science91_c">Nukleus dan nukleolus tidak terlihat</string>
+
+    <string name="scienced9_2">Hormon yang berfungsi dalam spermatognesis dan memunculkan tanda-tanda kelamin sekunder seperti tumbuhnya jakun adalah</string>
+    <string name="science92_a">Progesteron </string>
+    <string name="science92_b"> Testosteron</string>
+    <string name="science92_c">Estrogen</string>
+
+    <string name="science9_3">Hormon yang terlibat dalam proses menstruasi dan fungsinya yang tepat adalah</string>
+    <string name="science93_a"> Estrogen, memicu terbentuknya folikel</string>
+    <string name="science93_b">Luteinizing Hormon (LH), memicu proses ovulasi </string>
+    <string name="science93_c">Progesteron, memicu perkembangan sekunder pada wanita</string>
+
+    <string name="science9_4">Partikel yang dapat berpindah-pindah disebut</string>
+    <string name="science94_a"> Proton</string>
+    <string name="science94_b">Elektron </string>
+    <string name="science94_c">Neutron</string>
+
+    <string name="science9_5">Tiga buah hambatan listrik dipasang secara berdampingan. Pernyataan yang tepat mengenai karakteristik rangkaian tersebut adalah</string>
+    <string name="science95_a"> Arus listrik yang mengalir pada ketiga hambatan sama besar</string>
+    <string name="science95_b">Arus listrik yang mengalir pada ketiga hambatan tidak dapat ditentukan karena tidak diberitahu nilai hambatan listriknya </string>
+    <string name="science95_c">Tegangan yang mengalir pada masing-masing hambatan sama besar</string>
+
+    <string name="indonesian9_1">Penulisan kata bentukan yang tidak tepat terdapat pada kalimat</string>
+    <string name="indonesian91_a"> Pada masa ORBA, Indonesia terkenal dengan swa sembada pangannya.</string>
+    <string name="indonesian91_b">Pesawat itu telah lepas landas. </string>
+    <string name="indonesian91_c">Amerika Serikat adalah negara adikuasa.</string>
+
+    <string name="indonesian9_2">Tema teknologi dan manfaat bagi manusia. Rumuan permasalahan dari tema karaya tulis tersebut adalah</string>
+    <string name="indonesian92_a">Apakah teknologi bermanfaat bagi kehidupan manusia?  </string>
+    <string name="indonesian92_b"> Apa teknologi bermanfaat bagi kehidupan manusia?</string>
+    <string name="indonesian92_c">Mengapa teknologi bermanfaat bagi kehidupan manusia?</string>
+
+    <string name="indonesian9_3">Anda akan menulis sebuah karya tulis topik yang anda pilih “ perpustakaan multi media”dan fungsinya bagi pelajar”. Permasalahan yang tidak tepat berdasarkan topik tersebut adalah</string>
+    <string name="indonesian93_a"> Apakah fungsi perpusatakaan Multimedia bagi pelajar?</string>
+    <string name="indonesian93_b">Siapakan penggagas ide perpustakaan Multimedia?  </string>
+    <string name="indonesian93_c">Apakah yang dimaksud dengan perpustakaan Multimedia?</string>
+
+    <string name="indonesian9_4">Mereka melaksanakan daripada kegiatan rutin yang sering dilaksanakan setiap tahun.Bagian kalimat yang menyebabkan ketidak efektifan kalimat tersebut adalah</string>
+    <string name="indonesian94_a"> mereka, daripada</string>
+    <string name="indonesian94_b"> kegiatan. Selalu</string>
+    <string name="indonesian94_c">daripada, sering</string>
+
+    <string name="indonesian9_5">di bawah ini contoh penulisan alamat pada surat dinas yang benar ialah</string>
+    <string name="indonesian95_a"> Yth. Bapak Kepala SMA Muhammadiyah 03 Bangun Rejo</string>
+    <string name="indonesian95_b">Yth. Bapak Kepala Sekolah SMAN BANGUN REJO </string>
+    <string name="indonesian95_c">YTH. Kepada bapak kepala sekolah SMA Muhammadiyah 03 Bangun Rejo</string>
+
 </resources>
