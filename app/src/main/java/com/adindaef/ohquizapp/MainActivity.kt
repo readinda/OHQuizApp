@@ -1,5 +1,6 @@
 package com.adindaef.ohquizapp
 
+import android.content.ClipData
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -13,8 +14,16 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.ListView
+import android.widget.Toast
+import androidx.core.view.GravityCompat
+import com.adindaef.ohquizapp.ui.category.CategoryFragment
+import com.adindaef.ohquizapp.ui.home.HomeFragment
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -36,12 +45,15 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_home,
+                R.id.nav_one,
+                R.id.nav_two,
+                R.id.nav_three
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -53,5 +65,64 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+
+            R.id.nav_home -> {
+
+                val cf = HomeFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
+                supportFragmentManager.popBackStack()
+
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                toolbar.setTitle("Home")
+            }
+
+            R.id.nav_one -> {
+
+                val cf = CategoryFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
+                supportFragmentManager.popBackStack()
+
+                toolbar.setTitle("First Class")
+
+                Toast.makeText(this, "First Class", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.nav_two -> {
+
+                val cf = CategoryFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
+                supportFragmentManager.popBackStack()
+
+                toolbar.setTitle("Second grade")
+
+                Toast.makeText(this, "Second grade", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.nav_three -> {
+
+                val cf = CategoryFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
+                supportFragmentManager.popBackStack()
+
+                toolbar.setTitle("third grade")
+
+                Toast.makeText(this, "Third grade", Toast.LENGTH_SHORT).show()
+            }
+        }
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
     }
 }
