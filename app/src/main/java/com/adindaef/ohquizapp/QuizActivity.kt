@@ -7,6 +7,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.RadioButton
 import android.widget.Toast
 import com.adindaef.ohquizapp.model.Question
@@ -54,13 +55,18 @@ class QuizActivity : AppCompatActivity() {
         txtColorDefaultRb = rb1.textColors
 
         val intent = intent
-        val difficulty = intent.getStringExtra(HomeFragment.EXTRA_DIFFICULTY)
+        val namaCategory = intent.getStringExtra("nama")
+        val kelas = intent.getStringExtra("kelas")
+        Log.d("kimseokjin", namaCategory + kelas)
 
-        txtDifficulty.setText("Difficulty: " + difficulty)
+        Toast.makeText(this,"" + namaCategory + kelas, Toast.LENGTH_SHORT).show()
+
+
+        //txtDifficulty.setText("Difficulty: " + difficulty)
 
         if (savedInstanceState == null){
             db = QuizDBHelper(this)
-            questionList = db.getQuestion(difficulty)
+            //questionList = db.getQuestion(difficulty)
 
             questionCountTotal = questionList.size
             Collections.shuffle(questionList)

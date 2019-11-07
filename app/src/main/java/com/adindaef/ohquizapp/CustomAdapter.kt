@@ -1,17 +1,20 @@
 package com.adindaef.ohquizapp
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val listCategory: ArrayList<CategoryModel>): RecyclerView.Adapter<CustomAdapter.ListViewHolder>() {
+class CustomAdapter(val c: Context?,
+    private val listCategory: ArrayList<CategoryModel>,
+    val myvalue: String
+): RecyclerView.Adapter<CustomAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -36,11 +39,12 @@ class CustomAdapter(private val listCategory: ArrayList<CategoryModel>): Recycle
 
         holder.itemView.setOnClickListener {
 
-//            var intent = Intent(holder.itemView.context, DetailAcivity::class.java)
-//            intent.putExtra("nama", category.name)
-//            intent.putExtra("photo", category.photo)
-//            holder.itemView.context.startActivity(intent)
-//
+            var intent = Intent(c, QuizActivity::class.java)
+            intent.putExtra("nama", category.name)
+            intent.putExtra("kelas", myvalue)
+            holder.itemView.context.startActivity(intent)
+            (holder.itemView.context as Activity).finish()
+
         }
 
     }

@@ -22,6 +22,11 @@ import com.adindaef.ohquizapp.ui.category.CategoryFragment
 import com.adindaef.ohquizapp.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -91,7 +96,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.nav_one -> {
 
+                val bundle = Bundle()
+                val myMessage = "First Class"
+                bundle.putString("message", myMessage)
+
                 val cf = CategoryFragment()
+                cf.arguments = bundle
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
@@ -102,7 +112,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.nav_two -> {
 
+                val bundle = Bundle()
+                val myMessage = "Second grade"
+                bundle.putString("message", myMessage)
+
                 val cf = CategoryFragment()
+                cf.arguments = bundle
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
@@ -113,11 +128,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.nav_three -> {
 
+                val bundle = Bundle()
+                val myMessage = "Third grade"
+                bundle.putString("message", myMessage)
+
                 val cf = CategoryFragment()
+                cf.arguments = bundle
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("third grade")
+                toolbar.setTitle("Third grade")
 
                 Toast.makeText(this, "Third grade", Toast.LENGTH_SHORT).show()
             }
