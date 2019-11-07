@@ -18,6 +18,7 @@ import com.adindaef.ohquizapp.R
 import com.adindaef.ohquizapp.model.Category
 import com.adindaef.ohquizapp.model.Question
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
     companion object{
@@ -49,10 +50,10 @@ class HomeFragment : Fragment() {
 
 
 
-        loadHighscore()
+//        loadHighscore()
 //        loadSpinnerDifficulty()
 
-        btnStartQuiz.setOnClickListener {
+        root.btnStartQuiz.setOnClickListener {
             questionList = db.getAllQuestion
             if (questionList.size > 0){
                 val difficulty = spinnerDifficulty.selectedItem.toString()
