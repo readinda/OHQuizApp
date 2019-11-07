@@ -8,9 +8,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="first_class">First class</string>
-    <string name="second_grade">second grade</string>
-    <string name="third_grade">third grade</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
