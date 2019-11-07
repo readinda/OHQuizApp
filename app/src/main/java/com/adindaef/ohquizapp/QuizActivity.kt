@@ -57,7 +57,6 @@ class QuizActivity : AppCompatActivity() {
         val intent = intent
         val namaCategory = intent.getStringExtra("nama")
         val kelas = intent.getStringExtra("kelas")
-        Log.d("kimseokjin", namaCategory + kelas)
 
         Toast.makeText(this,"" + namaCategory + kelas, Toast.LENGTH_SHORT).show()
 
