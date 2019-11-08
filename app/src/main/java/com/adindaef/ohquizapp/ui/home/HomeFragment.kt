@@ -53,17 +53,17 @@ class HomeFragment : Fragment() {
 //        loadHighscore()
 //        loadSpinnerDifficulty()
 
-        root.btnStartQuiz.setOnClickListener {
-            questionList = db.getAllQuestion
-            if (questionList.size > 0){
-                val difficulty = spinnerDifficulty.selectedItem.toString()
-                val i = Intent(context, QuizActivity::class.java)
-                i.putExtra(EXTRA_DIFFICULTY, difficulty)
-                startActivityForResult(i, REQUEST_CODE_QUIZ)
-            } else {
-                fillQuestion()
-            }
-        }
+//        root.btnStartQuiz.setOnClickListener {
+//            questionList = db.getAllQuestion
+//            if (questionList.size > 0){
+//                val difficulty = spinnerDifficulty.selectedItem.toString()
+//                val i = Intent(context, QuizActivity::class.java)
+//                i.putExtra(EXTRA_DIFFICULTY, difficulty)
+//                startActivityForResult(i, REQUEST_CODE_QUIZ)
+//            } else {
+//                fillQuestion()
+//            }
+//        }
 
         return root
     }
