@@ -56,12 +56,12 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
         val CREATE_TABLE_CATEGORY: String = ("CREATE TABLE $TABLE_CATEGORY (" +
                 "$COLUMN_ID_CATEGORY INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_NAME_CATEGORY TEXT)")
-        db!!.execSQL(CREATE_TABLE_CATEGORY)
+        db.execSQL(CREATE_TABLE_CATEGORY)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        db!!.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORY")
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORY")
         onCreate(db)
     }
 
@@ -113,7 +113,7 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
         return listquestion
     }
 
-    fun getQuestion(difficulty: String): ArrayList<Question>{
+    fun getQuestion(difficulty: String?): ArrayList<Question>{
         val questionList = ArrayList<Question>()
 
         val db = this.writableDatabase

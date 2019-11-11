@@ -61,9 +61,9 @@ class Question: Parcelable{
     }
 
     companion object CREATOR : Parcelable.Creator<Question> {
-        val DIFFICULTY_FIRST_CLASS = "firstClass"
-        val DIFFICULTY_SECOND_GRADE = "secondGrade"
-        val DIFFICULTY_THIRD_GRADE = "thirdGrade"
+        val DIFFICULTY_FIRST_CLASS = "First Grade"
+        val DIFFICULTY_SECOND_GRADE = "Second Grade"
+        val DIFFICULTY_THIRD_GRADE = "Third Grade"
 
         override fun createFromParcel(parcel: Parcel): Question {
             return Question(parcel)

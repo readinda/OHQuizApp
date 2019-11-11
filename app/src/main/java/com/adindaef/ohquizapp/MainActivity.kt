@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import com.adindaef.ohquizapp.model.Question
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_one -> {
 
                 val bundle = Bundle()
-                val myMessage = "First Class"
+                val myMessage = Question.DIFFICULTY_FIRST_CLASS
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -105,15 +105,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("First Class")
+                toolbar.setTitle(Question.DIFFICULTY_FIRST_CLASS)
 
-                Toast.makeText(this, "First Class", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "First Class", Toast.LENGTH_SHORT).show()
             }
 
             R.id.nav_two -> {
 
                 val bundle = Bundle()
-                val myMessage = "Second Class"
+                val myMessage = Question.DIFFICULTY_SECOND_GRADE
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -121,15 +121,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("Second Class")
+                toolbar.setTitle(Question.DIFFICULTY_SECOND_GRADE)
 
-                Toast.makeText(this, "Second grade", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Second grade", Toast.LENGTH_SHORT).show()
             }
 
             R.id.nav_three -> {
 
                 val bundle = Bundle()
-                val myMessage = "Third Class"
+                val myMessage = Question.DIFFICULTY_THIRD_GRADE
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -137,9 +137,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("Third Class")
+                toolbar.setTitle(Question.DIFFICULTY_THIRD_GRADE)
 
-                Toast.makeText(this, "Third grade", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Third grade", Toast.LENGTH_SHORT).show()
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
