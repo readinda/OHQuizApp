@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_two -> {
 
                 val bundle = Bundle()
-                val myMessage = "Second grade"
+                val myMessage = "Second Class"
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("Second grade")
+                toolbar.setTitle("Second Class")
 
                 Toast.makeText(this, "Second grade", Toast.LENGTH_SHORT).show()
             }
@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_three -> {
 
                 val bundle = Bundle()
-                val myMessage = "Third grade"
+                val myMessage = "Third Class"
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("Third grade")
+                toolbar.setTitle("Third Class")
 
                 Toast.makeText(this, "Third grade", Toast.LENGTH_SHORT).show()
             }

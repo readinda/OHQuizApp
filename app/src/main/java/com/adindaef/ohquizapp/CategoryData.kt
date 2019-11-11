@@ -4,7 +4,7 @@ import java.util.ArrayList
 
 object CategoryData {
     var imageList = arrayOf(R.drawable.sience, R.drawable.math, R.drawable.bahasaindonesia)
-    var textList = arrayOf("SIENCE", "MATH", "Bahasa Indonesa")
+    var textList = arrayOf("IPA", "Matematika", "Bahasa Indonesa")
 
     val listData: ArrayList<CategoryModel>
         get() {

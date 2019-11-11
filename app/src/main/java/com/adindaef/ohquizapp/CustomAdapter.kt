@@ -39,11 +39,10 @@ class CustomAdapter(val c: Context?,
 
         holder.itemView.setOnClickListener {
 
-            var intent = Intent(c, QuizActivity::class.java)
+            var intent = Intent((holder.itemView.context as Activity).baseContext, TesActivity::class.java)
             intent.putExtra("nama", category.name)
             intent.putExtra("kelas", myvalue)
             holder.itemView.context.startActivity(intent)
-            (holder.itemView.context as Activity).finish()
 
         }
 

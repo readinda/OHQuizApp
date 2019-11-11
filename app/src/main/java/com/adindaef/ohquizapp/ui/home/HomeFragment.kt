@@ -15,13 +15,14 @@ import androidx.lifecycle.ViewModelProviders
 import com.adindaef.ohquizapp.QuizActivity
 import com.adindaef.ohquizapp.QuizDBHelper
 import com.adindaef.ohquizapp.R
+import com.adindaef.ohquizapp.TesActivity
 import com.adindaef.ohquizapp.model.Category
 import com.adindaef.ohquizapp.model.Question
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
-    companion object{
+    companion object {
         var REQUEST_CODE_QUIZ = 1
         val EXTRA_DIFFICULTY = "extraDifficulty"
 
@@ -44,10 +45,13 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-
+        val txt:TextView = root.findViewById(R.id.txtHighScore)
+        txt.setOnClickListener {
+            var intent = Intent(activity, TesActivity::class.java)
+            startActivity(intent)
+        }
 
         db = QuizDBHelper(context)
-
 
 
 //        loadHighscore()
@@ -96,10 +100,10 @@ class HomeFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == REQUEST_CODE_QUIZ){
-            if (resultCode == Activity.RESULT_OK){
+        if (requestCode == REQUEST_CODE_QUIZ) {
+            if (resultCode == Activity.RESULT_OK) {
                 val score = data!!.getIntExtra(QuizActivity.KEY_SCORE, 0)
-                if (score > highscore){
+                if (score > highscore) {
                     updateScore(score)
                 }
             }
