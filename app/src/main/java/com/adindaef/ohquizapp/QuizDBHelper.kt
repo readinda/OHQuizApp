@@ -50,7 +50,8 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
                 "$COLUMN_OPTION2 TEXT," +
                 "$COLUMN_OPTION3 TEXT," +
                 "$COLUMN_ANSWER INTEGER," +
-                "$COLUMN_DIFFICULTY TEXT)")
+                "$COLUMN_DIFFICULTY TEXT," +
+                "$COLUMN_CATEGORY INTEGER)")
         db!!.execSQL(CREATE_TABLE_QUERY)
 
         val CREATE_TABLE_CATEGORY: String = ("CREATE TABLE $TABLE_CATEGORY (" +
@@ -75,6 +76,7 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
         cv.put(COLUMN_OPTION3, question.option3)
         cv.put(COLUMN_ANSWER, question.answer)
         cv.put(COLUMN_DIFFICULTY, question.difficulty)
+        cv.put(COLUMN_CATEGORY, question.categoryID)
         db.insert(TABLE_NAME, null, cv)
         db.close()
     }
@@ -105,6 +107,7 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
                 question.option3 = cursor.getString(cursor.getColumnIndex(COLUMN_OPTION3))
                 question.answer = cursor.getInt(cursor.getColumnIndex(COLUMN_ANSWER))
                 question.difficulty = cursor.getString(cursor.getColumnIndex(COLUMN_DIFFICULTY))
+                question.categoryID = cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY))
 
                 listquestion.add(question)
             } while (cursor.moveToNext())
@@ -130,6 +133,7 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
                 question.option3 = cursor.getString(cursor.getColumnIndex(COLUMN_OPTION3))
                 question.answer = cursor.getInt(cursor.getColumnIndex(COLUMN_ANSWER))
                 question.difficulty = cursor.getString(cursor.getColumnIndex(COLUMN_DIFFICULTY))
+                question.categoryID = cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY))
 
                 questionList.add(question)
             } while (cursor.moveToNext())

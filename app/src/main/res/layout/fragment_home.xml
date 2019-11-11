@@ -13,21 +13,11 @@
         android:layout_centerInParent="true"
         />
 
-    <Button
-        android:id="@+id/btnStartQuiz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Quiz"
-        android:layout_below="@+id/txtHighScore"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        />
-
     <Spinner
         android:id="@+id/spinnerDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnStartQuiz"
+        android:layout_below="@+id/txtHighScore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         />
