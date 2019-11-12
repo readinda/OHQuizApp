@@ -120,9 +120,6 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
         val questionList = ArrayList<Question>()
 
         val db = this.writableDatabase
-//        val selectQuery = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_DIFFICULTY = ?"
-//        val selectArgs = arrayOf(difficulty)
-//        val cursor = db.rawQuery(selectQuery, selectArgs)
 
         val selection = COLUMN_CATEGORY + " = ? " +
                 " AND " + COLUMN_DIFFICULTY + " = ? "

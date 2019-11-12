@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding"
     android:background="#fff"
-    tools:context=".QuizActivity">
+    tools:context=".ui.activity.QuizActivity">
 
     <TextView
         android:id="@+id/txtScore"

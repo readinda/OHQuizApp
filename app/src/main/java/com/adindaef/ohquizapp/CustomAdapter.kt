@@ -1,26 +1,22 @@
 package com.adindaef.ohquizapp
 
-import android.app.Activity
+
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.adindaef.ohquizapp.model.CategoryModel
+import com.adindaef.ohquizapp.ui.activity.QuizActivity
 
-class CustomAdapter(val c: Context?,
+class CustomAdapter(
+    private val c: Context?,
     private val listCategory: ArrayList<CategoryModel>,
-    val myvalue: String
+    private val myvalue: String
 ): RecyclerView.Adapter<CustomAdapter.ListViewHolder>() {
-
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View =
@@ -39,7 +35,7 @@ class CustomAdapter(val c: Context?,
 
         holder.itemView.setOnClickListener {
 
-            var intent = Intent((holder.itemView.context as Activity).baseContext, QuizActivity::class.java)
+            val intent = Intent(c, QuizActivity::class.java)
             intent.putExtra("nama", category.name)
             intent.putExtra("kelas", myvalue)
             holder.itemView.context.startActivity(intent)
@@ -53,7 +49,4 @@ class CustomAdapter(val c: Context?,
         var imgPhoto: ImageView = itemView.findViewById(R.id.imgitem)
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: CategoryModel)
-    }
 }

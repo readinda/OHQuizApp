@@ -1,33 +1,25 @@
-package com.adindaef.ohquizapp
+package com.adindaef.ohquizapp.ui.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.widget.RadioButton
 import android.widget.Toast
 import com.adindaef.ohquizapp.model.Category
 import com.adindaef.ohquizapp.model.Question
-import com.adindaef.ohquizapp.ui.category.CategoryFragment
-import com.adindaef.ohquizapp.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_quiz.*
 import java.util.*
 import kotlin.collections.ArrayList
-import android.R.id
-import android.R.id.edit
-import android.content.Context
-import android.content.SharedPreferences
-import android.content.Context.MODE_PRIVATE
-
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AlertDialog
+import com.adindaef.ohquizapp.QuizDBHelper
+import com.adindaef.ohquizapp.R
 
 
 class QuizActivity : AppCompatActivity() {
     companion object{
-        var EXTRA_SCORE = "extraScore"
         val COUNTDOWN: Long = 30000
 
         val KEY_SCORE = "keyScore"
@@ -38,7 +30,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     lateinit var db: QuizDBHelper
-    var questionList: ArrayList<Question> = ArrayList<Question>()
+    var questionList: ArrayList<Question> = ArrayList()
 
     // menyimpan warna default dari text
     var txtColorDefaultRb: ColorStateList? = null
@@ -56,6 +48,7 @@ class QuizActivity : AppCompatActivity() {
 
     var backPressedTime: Long = 0
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
@@ -70,16 +63,15 @@ class QuizActivity : AppCompatActivity() {
         Toast.makeText(this,"" + namaCategory + kelas, Toast.LENGTH_SHORT).show()
 
 
-        txtDifficulty.setText("Grade: " + kelas)
-        txtCategory.setText("Category: " + namaCategory)
+        txtDifficulty.text = "Grade: $kelas"
+        txtCategory.text = "Category: $namaCategory"
 
         db = QuizDBHelper(this)
         questionList = db.getAllQuestion
         if (questionList.size > 0){
             //categories
 
-        }
-        else{
+        } else {
             fillQuestion()
         }
 
@@ -140,9 +132,9 @@ class QuizActivity : AppCompatActivity() {
             rb3.setText(currentQuestion!!.option3)
 
             questionCounter++
-            txtQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal)
+            txtQuestionCount.text = "Question: $questionCounter/$questionCountTotal"
             answered = false
-            btnConfirm.setText("Confirm")
+            btnConfirm.text = "Confirm"
 
             timeLeft = COUNTDOWN
             startCountDown()
@@ -152,23 +144,17 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun finishQuiz() {
-//        val result = Intent(this, HomeFragment::class.java)
-//        result.putExtra(EXTRA_SCORE, score)
-//        setResult(Activity.RESULT_OK, result)
-//        finish()
-//        val prefs = this.activity!!.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-//        val editor = prefs.edit()
-//        editor.putInt(KEY_HIGHSCORE, highscore)
-//        editor.apply()
-//        val pref = getPreferences(Context.MODE_PRIVATE)
-//        val edt = pref.edit()
-//        edt.putInt(EXTRA_SCORE, score)
-//        edt.apply()
 
-        val result = Intent()
-        result.putExtra(EXTRA_SCORE, score)
-        setResult(Activity.RESULT_OK, result)
-        finish()
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Congratulation")
+        dialogBuilder.setMessage("Your Score is $score")
+        dialogBuilder.setPositiveButton("Close") { _, _ ->
+            finish()
+
+        }
+        val b = dialogBuilder.create()
+        b.show()
+
 
     }
 
@@ -210,12 +196,12 @@ class QuizActivity : AppCompatActivity() {
         answered = true
         countDownTimer!!.cancel()
 
-        var rbSelected: RadioButton = findViewById(rbGroup.checkedRadioButtonId)
+        val rbSelected: RadioButton = findViewById(rbGroup.checkedRadioButtonId)
         val answer = rbGroup.indexOfChild(rbSelected) + 1
 
         if (answer == currentQuestion!!.answer){
             score++
-            txtScore.setText("Score: $score")
+            txtScore.text = "Score: $score"
         }
         showSolution()
     }

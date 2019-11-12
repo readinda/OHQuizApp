@@ -73,12 +73,5 @@ class Question: Parcelable{
             return arrayOfNulls(size)
         }
 
-//        fun getAllDifficultyLevels(): Array<String>{
-//            return arrayOf(
-//                DIFFICULTY_FIRST_CLASS,
-//                DIFFICULTY_SECOND_GRADE,
-//                DIFFICULTY_THIRD_GRADE
-//            )
-//        }
     }
 }

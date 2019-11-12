@@ -1,4 +1,4 @@
-package com.adindaef.ohquizapp
+package com.adindaef.ohquizapp.model
 
 data class CategoryModel (
     var name: String = "",
