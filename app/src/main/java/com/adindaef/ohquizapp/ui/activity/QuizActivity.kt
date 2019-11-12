@@ -60,9 +60,6 @@ class QuizActivity : AppCompatActivity() {
         val namaCategory = intent.getStringExtra("nama")
         val kelas = intent.getStringExtra("kelas")
 
-        Toast.makeText(this,"" + namaCategory + kelas, Toast.LENGTH_SHORT).show()
-
-
         txtDifficulty.text = "Grade: $kelas"
         txtCategory.text = "Category: $namaCategory"
 
