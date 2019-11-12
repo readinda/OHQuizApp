@@ -12,7 +12,7 @@
         android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: "
+        android:text="Score: 0"
         android:freezesText="true"
         />
 
@@ -38,10 +38,9 @@
         android:id="@+id/txtCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category: "
         android:layout_below="@+id/txtDifficulty"
         android:freezesText="true"
-        />
+        android:text="Category: " />
 
     <TextView
         android:id="@+id/txtCountDown"

@@ -12,10 +12,18 @@ import android.widget.RadioButton
 import android.widget.Toast
 import com.adindaef.ohquizapp.model.Category
 import com.adindaef.ohquizapp.model.Question
+import com.adindaef.ohquizapp.ui.category.CategoryFragment
 import com.adindaef.ohquizapp.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_quiz.*
 import java.util.*
 import kotlin.collections.ArrayList
+import android.R.id
+import android.R.id.edit
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.Context.MODE_PRIVATE
+
+
 
 class QuizActivity : AppCompatActivity() {
     companion object{
@@ -62,18 +70,23 @@ class QuizActivity : AppCompatActivity() {
         Toast.makeText(this,"" + namaCategory + kelas, Toast.LENGTH_SHORT).show()
 
 
-        txtDifficulty.setText("Difficulty: " + kelas)
+        txtDifficulty.setText("Grade: " + kelas)
+        txtCategory.setText("Category: " + namaCategory)
 
         db = QuizDBHelper(this)
         questionList = db.getAllQuestion
-        if (questionList.size < 0){
+        if (questionList.size > 0){
+            //categories
+
+        }
+        else{
             fillQuestion()
         }
 
 
         if (savedInstanceState == null){
             db = QuizDBHelper(this)
-            questionList = db.getQuestion(kelas)
+            questionList = db.getQuestion(namaCategory, kelas)
 
             questionCountTotal = questionList.size
             Collections.shuffle(questionList)
@@ -139,10 +152,24 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun finishQuiz() {
+//        val result = Intent(this, HomeFragment::class.java)
+//        result.putExtra(EXTRA_SCORE, score)
+//        setResult(Activity.RESULT_OK, result)
+//        finish()
+//        val prefs = this.activity!!.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+//        val editor = prefs.edit()
+//        editor.putInt(KEY_HIGHSCORE, highscore)
+//        editor.apply()
+//        val pref = getPreferences(Context.MODE_PRIVATE)
+//        val edt = pref.edit()
+//        edt.putInt(EXTRA_SCORE, score)
+//        edt.apply()
+
         val result = Intent()
         result.putExtra(EXTRA_SCORE, score)
         setResult(Activity.RESULT_OK, result)
         finish()
+
     }
 
     private fun startCountDown() {
@@ -247,7 +274,6 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun fillQuestion() {
-
         val q1m7 = Question(
             getString(R.string.math7_1),
             (getString(R.string.math71_a)),

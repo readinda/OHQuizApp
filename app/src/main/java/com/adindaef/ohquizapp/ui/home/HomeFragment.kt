@@ -12,11 +12,15 @@ import androidx.fragment.app.Fragment
 import com.adindaef.ohquizapp.QuizActivity
 import com.adindaef.ohquizapp.QuizDBHelper
 import com.adindaef.ohquizapp.R
-import com.adindaef.ohquizapp.TesActivity
+//import com.adindaef.ohquizapp.TesActivity
 import com.adindaef.ohquizapp.model.Category
 import com.adindaef.ohquizapp.model.Question
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import android.content.SharedPreferences
+
+
+
 
 class HomeFragment : Fragment() {
     companion object {
@@ -42,16 +46,22 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val txt: TextView = root.findViewById(R.id.txtHighScore)
-        txt.setOnClickListener {
-            var intent = Intent(activity, TesActivity::class.java)
-            startActivity(intent)
-        }
+//        val txt: TextView = root.findViewById(R.id.txtHighScore)
+//        txt.setOnClickListener {
+//            var intent = Intent(activity, TesActivity::class.java)
+//            startActivity(intent)
+//        }
 
         db = QuizDBHelper(context)
 
 
-//        loadHighscore()
+
+        val pref = activity!!.getPreferences(Context.MODE_PRIVATE)
+        val score = pref.getInt(QuizActivity.EXTRA_SCORE, 0)
+        if (score > highscore) {
+            updateScore(score)
+        }
+        //loadHighscore()
 //        loadSpinnerDifficulty()
 
 //        root.btnStartQuiz.setOnClickListener {
@@ -72,9 +82,10 @@ class HomeFragment : Fragment() {
 
 
     private fun loadHighscore() {
+
         val prefs = this.activity!!.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
         highscore = prefs.getInt(KEY_HIGHSCORE, 0)
-        txtHighScore.setText("Highscore: $highscore")
+        txtHighScore.setText("Highscore: " + highscore)
     }
 
 //    private fun loadSpinnerDifficulty() {
@@ -88,10 +99,7 @@ class HomeFragment : Fragment() {
 
         if (requestCode == REQUEST_CODE_QUIZ) {
             if (resultCode == Activity.RESULT_OK) {
-                val score = data!!.getIntExtra(QuizActivity.KEY_SCORE, 0)
-                if (score > highscore) {
-                    updateScore(score)
-                }
+
             }
         }
     }
