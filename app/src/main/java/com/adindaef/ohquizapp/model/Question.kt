@@ -11,7 +11,7 @@ class Question: Parcelable{
     var option3: String? = null
     var answer: Int = 0
     var difficulty: String? = null
-    var categoryID: Int = 0
+    var categoryID: String? = null
 
     constructor(parcel: Parcel): this(){
         id = parcel.readInt()
@@ -21,7 +21,7 @@ class Question: Parcelable{
         option3 = parcel.readString()
         answer = parcel.readInt()
         difficulty = parcel.readString()
-        categoryID = parcel.readInt()
+        categoryID = parcel.readString()
     }
 
     constructor(){}
@@ -33,7 +33,7 @@ class Question: Parcelable{
         option3: String?,
         answer: Int,
         difficulty: String?,
-        categoryID: Int
+        categoryID: String?
     ) {
         this.id = id
         this.question = question
@@ -53,7 +53,7 @@ class Question: Parcelable{
         parcel.writeString(option3)
         parcel.writeInt(answer)
         parcel.writeString(difficulty)
-        parcel.writeInt(categoryID)
+        parcel.writeString(categoryID)
     }
 
     override fun describeContents(): Int {
@@ -61,9 +61,9 @@ class Question: Parcelable{
     }
 
     companion object CREATOR : Parcelable.Creator<Question> {
-        val DIFFICULTY_FIRST_CLASS = "firstClass"
-        val DIFFICULTY_SECOND_GRADE = "secondGrade"
-        val DIFFICULTY_THIRD_GRADE = "thirdGrade"
+        val DIFFICULTY_FIRST_CLASS = "First Grade"
+        val DIFFICULTY_SECOND_GRADE = "Second Grade"
+        val DIFFICULTY_THIRD_GRADE = "Third Grade"
 
         override fun createFromParcel(parcel: Parcel): Question {
             return Question(parcel)
@@ -73,12 +73,5 @@ class Question: Parcelable{
             return arrayOfNulls(size)
         }
 
-        fun getAllDifficultyLevels(): Array<String>{
-            return arrayOf(
-                DIFFICULTY_FIRST_CLASS,
-                DIFFICULTY_SECOND_GRADE,
-                DIFFICULTY_THIRD_GRADE
-            )
-        }
     }
 }

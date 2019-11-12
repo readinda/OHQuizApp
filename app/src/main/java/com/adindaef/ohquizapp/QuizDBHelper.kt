@@ -51,18 +51,18 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
                 "$COLUMN_OPTION3 TEXT," +
                 "$COLUMN_ANSWER INTEGER," +
                 "$COLUMN_DIFFICULTY TEXT," +
-                "$COLUMN_CATEGORY INTEGER)")
+                "$COLUMN_CATEGORY TEXT)")
         db!!.execSQL(CREATE_TABLE_QUERY)
 
         val CREATE_TABLE_CATEGORY: String = ("CREATE TABLE $TABLE_CATEGORY (" +
                 "$COLUMN_ID_CATEGORY INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_NAME_CATEGORY TEXT)")
-        db!!.execSQL(CREATE_TABLE_CATEGORY)
+        db.execSQL(CREATE_TABLE_CATEGORY)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        db!!.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORY")
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORY")
         onCreate(db)
     }
 
@@ -107,7 +107,7 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
                 question.option3 = cursor.getString(cursor.getColumnIndex(COLUMN_OPTION3))
                 question.answer = cursor.getInt(cursor.getColumnIndex(COLUMN_ANSWER))
                 question.difficulty = cursor.getString(cursor.getColumnIndex(COLUMN_DIFFICULTY))
-                question.categoryID = cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY))
+                question.categoryID = cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY))
 
                 listquestion.add(question)
             } while (cursor.moveToNext())
@@ -116,13 +116,21 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
         return listquestion
     }
 
-    fun getQuestion(difficulty: String): ArrayList<Question>{
+    fun getQuestion(categoryID: String?, difficulty: String?): ArrayList<Question>{
         val questionList = ArrayList<Question>()
 
         val db = this.writableDatabase
-        val selectQuery = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_DIFFICULTY = ?"
-        val selectArgs = arrayOf(difficulty)
-        val cursor = db.rawQuery(selectQuery, selectArgs)
+
+        val selection = COLUMN_CATEGORY + " = ? " +
+                " AND " + COLUMN_DIFFICULTY + " = ? "
+        val selectionArgs = arrayOf(categoryID.toString(), difficulty)
+
+        val cursor = db.query(
+            TABLE_NAME,
+            null,
+            selection,
+            selectionArgs, null, null, null
+        )
         if (cursor.moveToFirst()){
             do {
                 val question = Question()
@@ -133,7 +141,7 @@ class QuizDBHelper(context: Context?): SQLiteOpenHelper(context, DATABASE_NAME, 
                 question.option3 = cursor.getString(cursor.getColumnIndex(COLUMN_OPTION3))
                 question.answer = cursor.getInt(cursor.getColumnIndex(COLUMN_ANSWER))
                 question.difficulty = cursor.getString(cursor.getColumnIndex(COLUMN_DIFFICULTY))
-                question.categoryID = cursor.getInt(cursor.getColumnIndex(COLUMN_CATEGORY))
+                question.categoryID = cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY))
 
                 questionList.add(question)
             } while (cursor.moveToNext())

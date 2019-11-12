@@ -1,6 +1,5 @@
-package com.adindaef.ohquizapp
+package com.adindaef.ohquizapp.ui.activity
 
-import android.content.ClipData
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -15,17 +14,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ListView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
-import com.adindaef.ohquizapp.ui.category.CategoryFragment
-import com.adindaef.ohquizapp.ui.home.HomeFragment
+import com.adindaef.ohquizapp.R
+import com.adindaef.ohquizapp.ui.fragment.CategoryFragment
+import com.adindaef.ohquizapp.ui.fragment.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import com.adindaef.ohquizapp.model.Question
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -73,7 +69,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
@@ -91,13 +87,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.popBackStack()
 
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-                toolbar.setTitle("Home")
+                toolbar.title = "Home"
             }
 
             R.id.nav_one -> {
 
                 val bundle = Bundle()
-                val myMessage = "First Class"
+                val myMessage = Question.DIFFICULTY_FIRST_CLASS
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -105,15 +101,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("First Class")
+                toolbar.title = Question.DIFFICULTY_FIRST_CLASS
 
-                Toast.makeText(this, "First Class", Toast.LENGTH_SHORT).show()
             }
 
             R.id.nav_two -> {
 
                 val bundle = Bundle()
-                val myMessage = "Second grade"
+                val myMessage = Question.DIFFICULTY_SECOND_GRADE
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -121,15 +116,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("Second grade")
+                toolbar.title = Question.DIFFICULTY_SECOND_GRADE
 
-                Toast.makeText(this, "Second grade", Toast.LENGTH_SHORT).show()
             }
 
             R.id.nav_three -> {
 
                 val bundle = Bundle()
-                val myMessage = "Third grade"
+                val myMessage = Question.DIFFICULTY_THIRD_GRADE
                 bundle.putString("message", myMessage)
 
                 val cf = CategoryFragment()
@@ -137,9 +131,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
 
-                toolbar.setTitle("Third grade")
-
-                Toast.makeText(this, "Third grade", Toast.LENGTH_SHORT).show()
+                toolbar.title = Question.DIFFICULTY_THIRD_GRADE
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)

@@ -1,10 +1,15 @@
-package com.adindaef.ohquizapp
+package com.adindaef.ohquizapp.model
 
+import com.adindaef.ohquizapp.R
 import java.util.ArrayList
 
 object CategoryData {
-    var imageList = arrayOf(R.drawable.sience, R.drawable.math, R.drawable.bahasaindonesia)
-    var textList = arrayOf("SIENCE", "MATH", "Bahasa Indonesa")
+    var imageList = arrayOf(
+        R.drawable.sience,
+        R.drawable.math,
+        R.drawable.bahasaindonesia
+    )
+    var textList = arrayOf(Category.IPA, Category.MATEMATIKA, Category.BAHASA_INDONESIA)
 
     val listData: ArrayList<CategoryModel>
         get() {

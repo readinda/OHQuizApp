@@ -1,70 +1,265 @@
-package com.adindaef.ohquizapp.ui.home
+package com.adindaef.ohquizapp.ui.activity
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.adindaef.ohquizapp.QuizActivity
-import com.adindaef.ohquizapp.QuizDBHelper
-import com.adindaef.ohquizapp.R
+import android.os.CountDownTimer
+import android.widget.RadioButton
+import android.widget.Toast
 import com.adindaef.ohquizapp.model.Category
 import com.adindaef.ohquizapp.model.Question
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.activity_quiz.*
+import java.util.*
+import kotlin.collections.ArrayList
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AlertDialog
+import com.adindaef.ohquizapp.QuizDBHelper
+import com.adindaef.ohquizapp.R
 
-class HomeFragment : Fragment() {
-    companion object {
-        var REQUEST_CODE_QUIZ = 1
-        val EXTRA_DIFFICULTY = "extraDifficulty"
 
-        var SHARED_PREF = "sharePref"
-        var KEY_HIGHSCORE = "keyHighscore"
+class QuizActivity : AppCompatActivity() {
+    companion object{
+        val COUNTDOWN: Long = 30000
 
-        var highscore: Int = 0
+        val KEY_SCORE = "keyScore"
+        val KEY_QUESTION_COUNT = "keyQuestionCount"
+        val KEY_QUESTION_LIST = "keyQuestionList"
+        val KEY_TIME_LEFT = "keyTimeLeft"
+        val KEY_ANSWERED = "keyAnswered"
     }
 
     lateinit var db: QuizDBHelper
     var questionList: ArrayList<Question> = ArrayList()
 
-    private lateinit var homeViewModel: HomeViewModel
+    // menyimpan warna default dari text
+    var txtColorDefaultRb: ColorStateList? = null
+    var txtColorDefaultCd: ColorStateList? = null
+
+    var countDownTimer: CountDownTimer? = null
+    var timeLeft: Long = 0
+
+    var questionCounter: Int = 0
+    var questionCountTotal: Int = 0
+    var currentQuestion: Question? = null
+
+    var score: Int = 0
+    var answered: Boolean = false
+
+    var backPressedTime: Long = 0
+
+    @SuppressLint("SetTextI18n")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_quiz)
+
+        txtColorDefaultCd = txtCountDown.textColors
+        txtColorDefaultRb = rb1.textColors
+
+        val intent = intent
+        val namaCategory = intent.getStringExtra("nama")
+        val kelas = intent.getStringExtra("kelas")
+
+        Toast.makeText(this,"" + namaCategory + kelas, Toast.LENGTH_SHORT).show()
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        txtDifficulty.text = "Grade: $kelas"
+        txtCategory.text = "Category: $namaCategory"
+
+        db = QuizDBHelper(this)
+        questionList = db.getAllQuestion
+        if (questionList.size > 0){
+            //categories
+
+        } else {
+            fillQuestion()
+        }
 
 
+        if (savedInstanceState == null){
+            db = QuizDBHelper(this)
+            questionList = db.getQuestion(namaCategory, kelas)
 
-        db = QuizDBHelper(context)
+            questionCountTotal = questionList.size
+            Collections.shuffle(questionList)
+            showNextQuestion()
+        } else {
+            questionList = savedInstanceState.getParcelableArrayList(KEY_QUESTION_LIST)!!
+            questionCountTotal = questionList.size
+            questionCounter = savedInstanceState.getInt(KEY_QUESTION_COUNT)
+            score = savedInstanceState.getInt(KEY_SCORE)
+            timeLeft = savedInstanceState.getLong(KEY_TIME_LEFT)
+            answered = savedInstanceState.getBoolean(KEY_ANSWERED)
+            currentQuestion = questionList.get(questionCounter - 1)
+
+            if (!answered){
+                startCountDown()
+            } else {
+                updateCountDownText()
+                showSolution()
+            }
+        }
+
+        btnConfirm.setOnClickListener {
+            if (timeLeft > 0){
+                if (!answered){
+                    if (rb1.isChecked || rb2.isChecked || rb3.isChecked){
+                        checkAnswer()
+                    } else {
+                        Toast.makeText(this, "Please select an answer!", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    showNextQuestion()
+                }
+            } else {
+                showNextQuestion()
+            }
+        }
+    }
+
+    private fun showNextQuestion() {
+        rbGroup.clearCheck()
+        rb1.setTextColor(txtColorDefaultRb)
+        rb2.setTextColor(txtColorDefaultRb)
+        rb3.setTextColor(txtColorDefaultRb)
+
+        if (questionCounter < questionCountTotal){
+            currentQuestion = questionList.get(questionCounter)
+
+            txtQuestion.setText(currentQuestion!!.question)
+            rb1.setText(currentQuestion!!.option1)
+            rb2.setText(currentQuestion!!.option2)
+            rb3.setText(currentQuestion!!.option3)
+
+            questionCounter++
+            txtQuestionCount.text = "Question: $questionCounter/$questionCountTotal"
+            answered = false
+            btnConfirm.text = "Confirm"
+
+            timeLeft = COUNTDOWN
+            startCountDown()
+        } else {
+            finishQuiz()
+        }
+    }
+
+    private fun finishQuiz() {
+
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Congratulation")
+        dialogBuilder.setMessage("Your Score is $score")
+        dialogBuilder.setPositiveButton("Close") { _, _ ->
+            finish()
+
+        }
+        val b = dialogBuilder.create()
+        b.show()
 
 
-//        loadHighscore()
-//        loadSpinnerDifficulty()
+    }
 
-//        root.btnStartQuiz.setOnClickListener {
-//            questionList = db.getAllQuestion
-//            if (questionList.size > 0) {
-//                val difficulty = spinnerDifficulty.selectedItem.toString()
-//                val i = Intent(context, QuizActivity::class.java)
-//                i.putExtra(EXTRA_DIFFICULTY, difficulty)
-//                startActivityForResult(i, REQUEST_CODE_QUIZ)
-//            } else {
-//                fillQuestion()
-//            }
-//        }
+    private fun startCountDown() {
+        countDownTimer = object: CountDownTimer(timeLeft, 1000){
+            override fun onFinish() {
+                timeLeft = 0
+                updateCountDownText()
 
-        return root
+                if (rb1.isChecked || rb2.isChecked || rb3.isChecked){
+                    checkAnswer()
+                } else {
+                    showSolution()
+                }
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeft = millisUntilFinished
+                updateCountDownText()
+            }
+        }.start()
+    }
+
+    private fun updateCountDownText() {
+        val minutes = (timeLeft / 1000) / 60
+        val seconds = (timeLeft / 1000) % 60
+
+        val timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
+        txtCountDown.setText(timeFormatted)
+
+        if (timeLeft < 10000){
+            txtCountDown.setTextColor(Color.RED)
+        } else {
+            txtCountDown.setTextColor(txtColorDefaultCd)
+        }
+    }
+
+    private fun checkAnswer() {
+        answered = true
+        countDownTimer!!.cancel()
+
+        val rbSelected: RadioButton = findViewById(rbGroup.checkedRadioButtonId)
+        val answer = rbGroup.indexOfChild(rbSelected) + 1
+
+        if (answer == currentQuestion!!.answer){
+            score++
+            txtScore.text = "Score: $score"
+        }
+        showSolution()
+    }
+
+    private fun showSolution() {
+        rb1.setTextColor(Color.RED)
+        rb2.setTextColor(Color.RED)
+        rb3.setTextColor(Color.RED)
+
+        when (currentQuestion!!.answer){
+            1 -> {
+                rb1.setTextColor(Color.GREEN)
+                txtQuestion.text = "Answer 1 is Correct"
+            }
+            2 -> {
+                rb2.setTextColor(Color.GREEN)
+                txtQuestion.text = "Answer 2 is Correct"
+            }
+            3 -> {
+                rb3.setTextColor(Color.GREEN)
+                txtQuestion.text = "Answer 3 is Correct"
+            }
+        }
+
+        if (questionCounter < questionCountTotal){
+            btnConfirm.text = "Next"
+        } else {
+            btnConfirm.text = "Finish"
+        }
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()){
+            finishQuiz()
+        } else {
+            Toast.makeText(this, "Press back again to finish", Toast.LENGTH_LONG).show()
+        }
+
+        backPressedTime = System.currentTimeMillis()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (countDownTimer != null){
+            countDownTimer!!.cancel()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_SCORE, score)
+        outState.putInt(KEY_QUESTION_COUNT, questionCounter)
+        outState.putLong(KEY_TIME_LEFT, timeLeft)
+        outState.putBoolean(KEY_ANSWERED, answered)
+        outState.putParcelableArrayList(KEY_QUESTION_LIST, questionList)
     }
 
     private fun fillQuestion() {
-
         val q1m7 = Question(
             getString(R.string.math7_1),
             (getString(R.string.math71_a)),
@@ -601,7 +796,7 @@ class HomeFragment : Fragment() {
         db.addQuestion(q4i8)
         db.addQuestion(q5i8)
 
-        db.addQuestion(q1i9)
+        db.addQuestion(q1m9)
         db.addQuestion(q2m9)
         db.addQuestion(q3m9)
         db.addQuestion(q4m9)
@@ -619,40 +814,5 @@ class HomeFragment : Fragment() {
         db.addQuestion(q4i9)
         db.addQuestion(q5i9)
 
-    }
-
-    private fun loadHighscore() {
-        val prefs = this.activity!!.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-        highscore = prefs.getInt(KEY_HIGHSCORE, 0)
-        txtHighScore.setText("Highscore: $highscore")
-    }
-
-//    private fun loadSpinnerDifficulty() {
-//        val difficultyLevels = Question.getAllDifficultyLevels()
-//        val adapterDifficulty = ArrayAdapter(, R.layout.support_simple_spinner_dropdown_item, difficultyLevels)
-//        spinnerDifficulty.adapter = adapterDifficulty
-//    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == REQUEST_CODE_QUIZ) {
-            if (resultCode == Activity.RESULT_OK) {
-                val score = data!!.getIntExtra(QuizActivity.KEY_SCORE, 0)
-                if (score > highscore) {
-                    updateScore(score)
-                }
-            }
-        }
-    }
-
-    private fun updateScore(score: Int) {
-        highscore = score
-        txtHighScore.setText("Highscore: $highscore")
-
-        val prefs = this.activity!!.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        editor.putInt(KEY_HIGHSCORE, highscore)
-        editor.apply()
     }
 }

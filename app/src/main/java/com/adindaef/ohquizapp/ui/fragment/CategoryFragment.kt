@@ -1,4 +1,4 @@
-package com.adindaef.ohquizapp.ui.category
+package com.adindaef.ohquizapp.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.adindaef.ohquizapp.CategoryData
-import com.adindaef.ohquizapp.CategoryModel
+import com.adindaef.ohquizapp.model.CategoryData
+import com.adindaef.ohquizapp.model.CategoryModel
 import com.adindaef.ohquizapp.CustomAdapter
 import com.adindaef.ohquizapp.R
 

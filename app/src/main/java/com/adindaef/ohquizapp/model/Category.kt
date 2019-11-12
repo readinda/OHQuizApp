@@ -2,9 +2,9 @@ package com.adindaef.ohquizapp.model
 
 class Category {
     companion object{
-        val MATEMATIKA = 1
-        val IPA = 2
-        val BAHASA_INDONESIA = 3
+        val MATEMATIKA = "Matematika"
+        val IPA = "Ilmu Pengetahuan Alam"
+        val BAHASA_INDONESIA = "Bahasa Indonesia"
     }
 
     var id: Int = 0

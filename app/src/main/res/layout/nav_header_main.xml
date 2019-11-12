@@ -28,7 +28,7 @@
         android:textColor="#000"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="By : Aisyah - Muthia - Zahra"
