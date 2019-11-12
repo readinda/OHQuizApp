@@ -80,8 +80,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val cf = HomeFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.container, cf).commit()
                 supportFragmentManager.popBackStack()
-
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
                 toolbar.title = "Home"
             }
 

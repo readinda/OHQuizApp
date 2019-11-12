@@ -32,7 +32,7 @@ class CategoryFragment : Fragment() {
         val bundle = this.arguments
         myvalue = bundle!!.getString("message")!!
 
-        list.addAll(CategoryData.listData)
+        list.addAll(CategoryData(myvalue).listData)
         showRecyclerList()
 
         return view

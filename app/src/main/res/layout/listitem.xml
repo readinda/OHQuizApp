@@ -9,7 +9,6 @@
         android:layout_height="200dp"
         android:src="@drawable/ic_launcher_background"
         android:id="@+id/imgitem"
-        android:scaleType="centerCrop"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -17,6 +16,9 @@
         android:layout_height="wrap_content"
         android:text="Nama"
         android:id="@+id/txtItem"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:textSize="16sp"
         android:layout_marginTop="5dp"
         android:textAlignment="center"/>
 
