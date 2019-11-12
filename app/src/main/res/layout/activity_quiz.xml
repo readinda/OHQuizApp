@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding"
-    android:background="#fff"
-    tools:context=".ui.activity.QuizActivity">
+    android:background="#ffffb0"
+    tools:context=".QuizActivity">
 
     <TextView
         android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0"
+        android:text="Score: "
         android:freezesText="true"
         />
 
@@ -38,9 +38,10 @@
         android:id="@+id/txtCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Category: "
         android:layout_below="@+id/txtDifficulty"
         android:freezesText="true"
-        android:text="Category: " />
+        />
 
     <TextView
         android:id="@+id/txtCountDown"
