@@ -31,7 +31,7 @@
         android:id="@+id/textViewS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By : Aisyah - Muthia - Zahra"
+        android:text="By : Zahra - Aisyah - Muthia "
         android:textColor="#000"/>
 
 </LinearLayout>
